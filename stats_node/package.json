@@ -8,6 +8,7 @@
     },
     "author": "Nestor Marsollier",
     "license": "MIT",
+    "private": false,
     "scripts": {
         "start": "npm run build && npm run watch",
         "build": "npm run build-ts && npm run tslint && npm run apidoc && npm run apidocmd",
@@ -72,10 +73,10 @@
     },
     "husky": {
         "hooks": {
-            "applypatch-msg": "echo \"[Husky] applypatch-msg\"",
-            "pre-applypatch": "echo \"[Husky] pre-applypatch\"",
-            "post-applypatch": "echo \"[Husky] post-applypatch\"",
             "pre-commit": "echo \"[Husky] pre-commit\"",
+            "prepare-commit-msg": "echo \"[Husky] prepare-commit-msg\"",
+            "commit-msg": "echo \"[Husky] commit-msg\"",
+            "post-commit": "npm test",
             "pre-push": "echo \"[Husky] pre-push\""
         }
     }
