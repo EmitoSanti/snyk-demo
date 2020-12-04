@@ -75,7 +75,7 @@
     "husky": {
         "hooks": {
             "post-checkout": "echo \"[Husky] post-checkout\"",
-            "pre-commit": "(git-branch-is master && echo \"[Husky] pre-commit\") || echo \"[Husky] no es master\"",
+            "pre-commit": "(git-branch-is main && echo \"[Husky] pre-commit\") || echo \"[Husky] no es master\"",
             "prepare-commit-msg": "echo \"[Husky] prepare-commit-msg\"",
             "commit-msg": "echo \"[Husky] commit-msg\"",
             "post-commit": "npm test",
