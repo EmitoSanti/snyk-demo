@@ -19,7 +19,8 @@
         "tslint": "tslint -c tslint.json -p tsconfig.json",
         "apidoc": "./node_modules/.bin/apidoc -i src -o ./dist/public",
         "apidocmd": "./node_modules/.bin/apidoc-markdown2 -p ./dist/public -o README-API.md",
-        "test": "snyk test"
+        "snyk:dev": "snyk test --dev",
+        "test:dev": "snyk test --dev"
     },
     "dependencies": {
         "amqplib": "0.5.2",
@@ -28,7 +29,6 @@
         "compression": "1.7.2",
         "connect-mongo": "2.0.1",
         "cors": "2.8.4",
-        "dotenv": "5.0.1",
         "escape-html": "1.0.3",
         "express": "4.16.3",
         "helmet": "^3.21.1",
@@ -65,6 +65,7 @@
         "apidoc": "0.17.6",
         "apidoc-markdown2": "0.3.6",
         "concurrently": "3.5.1",
+        "dotenv": "^5.0.1",
         "husky": "^4.3.0",
         "nodemon": "1.17.5",
         "snyk": "^1.433.0",
@@ -73,7 +74,8 @@
     },
     "husky": {
         "hooks": {
-            "pre-commit": "echo \"[Husky] pre-commit\"",
+            "post-checkout": "echo \"[Husky] post-checkout\"",
+            "pre-commit": "(git-branch-is master && echo \"[Husky] pre-commit\") || echo \"[Husky] no es master\"",
             "prepare-commit-msg": "echo \"[Husky] prepare-commit-msg\"",
             "commit-msg": "echo \"[Husky] commit-msg\"",
             "post-commit": "npm test",
